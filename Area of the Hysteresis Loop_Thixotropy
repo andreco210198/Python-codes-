@@ -1,0 +1,23 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.integrate import trapezoid  
+import pandas as pd  
+
+"Digitar o caminho do arquivo e o nome da planilha, além dos nomes das colunas para x e y"
+df = pd.read_excel(r' ', 
+                   sheet_name=' ')
+
+x = df[' ']
+
+y = df[' ']
+
+area = trapezoid(y, x)
+print("Área de histerese:", area, '[Pa/s]')
+plt.plot(x, y, marker='o')
+plt.xlabel('Taxa de deformação (1/s)')
+plt.ylabel('Tensão de cisalhamento (Pa)')
+plt.title('Área de Histerese')
+plt.fill_between(x, y, alpha=0.3, color='orange')
+plt.text(0.5, 0.5, f'Área = {area:.2f} [Pa/s]', fontsize=12, ha='center', va='center', transform=plt.gca().transAxes)
+plt.show()
+plt.tight_layout()
